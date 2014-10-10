@@ -9660,3 +9660,391 @@ Unpermitted parameters: type, created_at
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "description", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "2.0"], ["created_at", "2014-10-10 17:18:26.337887"], ["creditor_id", 1], ["debtor_id", 4], ["description", "2"], ["updated_at", "2014-10-10 17:18:26.337887"]]
   [1m[35m (0.5ms)[0m  COMMIT
 Completed 200 OK in 41ms (Views: 0.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/v1/accounts/1" for 127.0.0.1 at 2014-10-10 12:50:18 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (30.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::AccountsController#show as JSON
+  Parameters: {"forman"=>"json", "id"=>"1"}
+  [1m[35mAccount Load (0.3ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mLoan Load (0.7ms)[0m  [1mSELECT "loans".* FROM "loans"  WHERE "loans"."creditor_id" = $1[0m  [["creditor_id", 1]]
+  [1m[35mLoan Load (0.3ms)[0m  SELECT "loans".* FROM "loans"  WHERE "loans"."debtor_id" = $1  [["debtor_id", 1]]
+  [1m[36m (16.3ms)[0m  [1mSELECT SUM("loans"."amount") AS sum_id FROM "loans"  WHERE "loans"."creditor_id" = $1 AND "loans"."private_debt" = 'f'[0m  [["creditor_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT SUM("loans"."amount") AS sum_id FROM "loans"  WHERE "loans"."debtor_id" = $1 AND "loans"."private_debt" = 'f'  [["debtor_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("loans"."amount") AS sum_id FROM "loans"  WHERE "loans"."creditor_id" = $1 AND "loans"."private_debt" = 'f'[0m  [["creditor_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("loans"."amount") AS sum_id FROM "loans"  WHERE "loans"."debtor_id" = $1 AND "loans"."private_debt" = 'f'  [["debtor_id", 1]]
+  [1m[36mAccount Load (0.3ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAccount Load (0.3ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAccount Load (0.3ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAccount Load (0.3ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered api/v1/accounts/show.json.rabl (751.2ms)
+Completed 200 OK in 989ms (Views: 844.6ms | ActiveRecord: 40.1ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (66.2ms)[0m  [1mINSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-10-10 18:03:09.581790"], ["name", "steve"], ["updated_at", "2014-10-10 18:03:09.581790"]]
+  [1m[35mApiKey Exists (82.9ms)[0m  SELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = 'db1cd5d2adf6340dc9134c7fe52b7d41' LIMIT 1
+  [1m[36mSQL (34.1ms)[0m  [1mINSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:03:09.687437"], ["token", "db1cd5d2adf6340dc9134c7fe52b7d41"], ["updated_at", "2014-10-10 18:03:09.687437"], ["user_id", 5]]
+  [1m[35m (5.8ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-10-10 18:03:09.913795"], ["name", "liz"], ["updated_at", "2014-10-10 18:03:09.913795"]]
+  [1m[36mApiKey Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = '7861a597602c7682f584e95f535c6f9e' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:03:09.915469"], ["token", "7861a597602c7682f584e95f535c6f9e"], ["updated_at", "2014-10-10 18:03:09.915469"], ["user_id", 6]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-10-10 18:03:09.918488"], ["name", "justin"], ["updated_at", "2014-10-10 18:03:09.918488"]]
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = '30a7454895a9f62e3c01ac900300e2bc' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:03:09.919464"], ["token", "30a7454895a9f62e3c01ac900300e2bc"], ["updated_at", "2014-10-10 18:03:09.919464"], ["user_id", 7]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-10-10 18:03:09.921986"], ["name", "bob"], ["updated_at", "2014-10-10 18:03:09.921986"]]
+  [1m[36mApiKey Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = '5137e1412e2762d77a117f6277828137' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:03:09.922866"], ["token", "5137e1412e2762d77a117f6277828137"], ["updated_at", "2014-10-10 18:03:09.922866"], ["user_id", 8]]
+  [1m[36m (13.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:03:09.950013"], ["name", "steve"], ["updated_at", "2014-10-10 18:03:09.950013"], ["user_id", 5]]
+  [1m[35m (18.8ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:03:09.971011"], ["name", "liz"], ["updated_at", "2014-10-10 18:03:09.971011"], ["user_id", 6]]
+  [1m[36m (34.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:03:10.007786"], ["name", "justin"], ["updated_at", "2014-10-10 18:03:10.007786"], ["user_id", 7]]
+  [1m[35m (32.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:03:10.042438"], ["name", "bob"], ["updated_at", "2014-10-10 18:03:10.042438"], ["user_id", 8]]
+  [1m[36m (26.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", "100.0"], ["created_at", "2014-10-10 18:03:10.147211"], ["creditor_id", 5], ["debtor_id", 6], ["updated_at", "2014-10-10 18:03:10.147211"]]
+  [1m[35m (29.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["amount", "80.0"], ["created_at", "2014-10-10 18:03:10.180733"], ["creditor_id", 5], ["debtor_id", 6], ["updated_at", "2014-10-10 18:03:10.180733"]]
+  [1m[36m (35.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", "90.0"], ["created_at", "2014-10-10 18:03:10.218348"], ["creditor_id", 6], ["debtor_id", 5], ["updated_at", "2014-10-10 18:03:10.218348"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["amount", "200.0"], ["created_at", "2014-10-10 18:03:10.221502"], ["creditor_id", 6], ["debtor_id", 5], ["updated_at", "2014-10-10 18:03:10.221502"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", "300.0"], ["created_at", "2014-10-10 18:03:10.223566"], ["creditor_id", 7], ["debtor_id", 5], ["updated_at", "2014-10-10 18:03:10.223566"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["amount", "450.0"], ["created_at", "2014-10-10 18:03:10.225229"], ["creditor_id", 7], ["debtor_id", 5], ["updated_at", "2014-10-10 18:03:10.225229"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", "230.0"], ["created_at", "2014-10-10 18:03:10.227008"], ["creditor_id", 5], ["debtor_id", 7], ["updated_at", "2014-10-10 18:03:10.227008"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["amount", "120.0"], ["created_at", "2014-10-10 18:03:10.228714"], ["creditor_id", 5], ["debtor_id", 7], ["updated_at", "2014-10-10 18:03:10.228714"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", "100.0"], ["created_at", "2014-10-10 18:03:10.230446"], ["creditor_id", 5], ["debtor_id", 8], ["updated_at", "2014-10-10 18:03:10.230446"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["amount", "99.0"], ["created_at", "2014-10-10 18:03:10.232259"], ["creditor_id", 8], ["debtor_id", 5], ["updated_at", "2014-10-10 18:03:10.232259"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[36m (145.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (110.0ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateLoans (20140928200117)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (200.1ms)[0m  [1mCREATE TABLE "loans" ("id" serial primary key, "creditor_id" integer, "debtor_id" integer, "amount" decimal, "description" character varying(255), "closed" boolean DEFAULT 'f', "private_debt" boolean DEFAULT 'f', "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140928200117"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateHistoricalLoans (20140928212415)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (1.9ms)[0m  [1mCREATE TABLE "historical_loans" ("id" serial primary key, "old_loan_id" integer, "new_loan_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140928212415"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAccounts (20140928212614)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (54.1ms)[0m  [1mCREATE TABLE "accounts" ("id" serial primary key, "user_id" integer, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140928212614"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateApiKeys (20140930184129)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "api_keys" ("id" serial primary key, "user_id" integer NOT NULL, "token" character varying(255) NOT NULL, "active" boolean DEFAULT 't' NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX  "index_api_keys_on_user_id" ON "api_keys"  ("user_id")
+  [1m[36m (0.7ms)[0m  [1mCREATE  INDEX  "index_api_keys_on_token" ON "api_keys"  ("token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140930184129"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20140930184921)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (2.2ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140930184921"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-10-10 18:03:22.431541"], ["name", "steve"], ["updated_at", "2014-10-10 18:03:22.431541"]]
+  [1m[35mApiKey Exists (1.4ms)[0m  SELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = '92a7b739320c3c8b82b659c2d7c99142' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:03:22.444019"], ["token", "92a7b739320c3c8b82b659c2d7c99142"], ["updated_at", "2014-10-10 18:03:22.444019"], ["user_id", 1]]
+  [1m[35m (1.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-10-10 18:03:22.459324"], ["name", "liz"], ["updated_at", "2014-10-10 18:03:22.459324"]]
+  [1m[36mApiKey Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = '2dd43541817aa3b9eb1e98d6fdf793f2' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:03:22.460579"], ["token", "2dd43541817aa3b9eb1e98d6fdf793f2"], ["updated_at", "2014-10-10 18:03:22.460579"], ["user_id", 2]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-10-10 18:03:22.463123"], ["name", "justin"], ["updated_at", "2014-10-10 18:03:22.463123"]]
+  [1m[35mApiKey Exists (0.3ms)[0m  SELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = '090fa1a9da8b5abe0a6253d57781a840' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:03:22.464014"], ["token", "090fa1a9da8b5abe0a6253d57781a840"], ["updated_at", "2014-10-10 18:03:22.464014"], ["user_id", 3]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-10-10 18:03:22.466208"], ["name", "bob"], ["updated_at", "2014-10-10 18:03:22.466208"]]
+  [1m[36mApiKey Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = '4d4204efa11de7f0acaf57b67de91123' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:03:22.466976"], ["token", "4d4204efa11de7f0acaf57b67de91123"], ["updated_at", "2014-10-10 18:03:22.466976"], ["user_id", 4]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (23.9ms)[0m  [1mINSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:03:22.480180"], ["name", "steve"], ["updated_at", "2014-10-10 18:03:22.480180"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:03:22.506684"], ["name", "liz"], ["updated_at", "2014-10-10 18:03:22.506684"], ["user_id", 2]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:03:22.508383"], ["name", "justin"], ["updated_at", "2014-10-10 18:03:22.508383"], ["user_id", 3]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:03:22.509709"], ["name", "bob"], ["updated_at", "2014-10-10 18:03:22.509709"], ["user_id", 4]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", "100.0"], ["created_at", "2014-10-10 18:03:22.553372"], ["creditor_id", 1], ["debtor_id", 2], ["updated_at", "2014-10-10 18:03:22.553372"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["amount", "80.0"], ["created_at", "2014-10-10 18:03:22.556512"], ["creditor_id", 1], ["debtor_id", 2], ["updated_at", "2014-10-10 18:03:22.556512"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", "90.0"], ["created_at", "2014-10-10 18:03:22.558294"], ["creditor_id", 2], ["debtor_id", 1], ["updated_at", "2014-10-10 18:03:22.558294"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["amount", "200.0"], ["created_at", "2014-10-10 18:03:22.559984"], ["creditor_id", 2], ["debtor_id", 1], ["updated_at", "2014-10-10 18:03:22.559984"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", "300.0"], ["created_at", "2014-10-10 18:03:22.561983"], ["creditor_id", 3], ["debtor_id", 1], ["updated_at", "2014-10-10 18:03:22.561983"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["amount", "450.0"], ["created_at", "2014-10-10 18:03:22.563477"], ["creditor_id", 3], ["debtor_id", 1], ["updated_at", "2014-10-10 18:03:22.563477"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", "230.0"], ["created_at", "2014-10-10 18:03:22.564980"], ["creditor_id", 1], ["debtor_id", 3], ["updated_at", "2014-10-10 18:03:22.564980"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["amount", "120.0"], ["created_at", "2014-10-10 18:03:22.566616"], ["creditor_id", 1], ["debtor_id", 3], ["updated_at", "2014-10-10 18:03:22.566616"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", "100.0"], ["created_at", "2014-10-10 18:03:22.568163"], ["creditor_id", 1], ["debtor_id", 4], ["updated_at", "2014-10-10 18:03:22.568163"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["amount", "99.0"], ["created_at", "2014-10-10 18:03:22.569629"], ["creditor_id", 4], ["debtor_id", 1], ["updated_at", "2014-10-10 18:03:22.569629"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[36m (22.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.8ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateLoans (20140928200117)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (4.2ms)[0m  [1mCREATE TABLE "loans" ("id" serial primary key, "creditor_id" integer, "debtor_id" integer, "amount" decimal, "description" character varying(255), "closed" boolean DEFAULT 'f', "private_debt" boolean DEFAULT 'f', "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140928200117"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateHistoricalLoans (20140928212415)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (27.6ms)[0m  [1mCREATE TABLE "historical_loans" ("id" serial primary key, "old_loan_id" integer, "new_loan_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140928212415"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAccounts (20140928212614)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (2.3ms)[0m  [1mCREATE TABLE "accounts" ("id" serial primary key, "user_id" integer, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140928212614"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateApiKeys (20140930184129)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (1.9ms)[0m  [1mCREATE TABLE "api_keys" ("id" serial primary key, "user_id" integer NOT NULL, "token" character varying(255) NOT NULL, "active" boolean DEFAULT 't' NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX  "index_api_keys_on_user_id" ON "api_keys"  ("user_id")
+  [1m[36m (0.6ms)[0m  [1mCREATE  INDEX  "index_api_keys_on_token" ON "api_keys"  ("token")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140930184129"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20140930184921)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (2.2ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140930184921"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-10-10 18:05:29.169085"], ["name", "steve"], ["updated_at", "2014-10-10 18:05:29.169085"]]
+  [1m[35mApiKey Exists (0.6ms)[0m  SELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = 'bba9d4c29134ed7acf5e60ccd03aa257' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:05:29.180819"], ["token", "bba9d4c29134ed7acf5e60ccd03aa257"], ["updated_at", "2014-10-10 18:05:29.180819"], ["user_id", 1]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-10-10 18:05:29.224072"], ["name", "liz"], ["updated_at", "2014-10-10 18:05:29.224072"]]
+  [1m[36mApiKey Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = 'fc42dac391be3d06013870fed769b5eb' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:05:29.225112"], ["token", "fc42dac391be3d06013870fed769b5eb"], ["updated_at", "2014-10-10 18:05:29.225112"], ["user_id", 2]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-10-10 18:05:29.227617"], ["name", "justin"], ["updated_at", "2014-10-10 18:05:29.227617"]]
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = '87d8e879ba2a20a3d059587ee4e5fb57' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:05:29.228419"], ["token", "87d8e879ba2a20a3d059587ee4e5fb57"], ["updated_at", "2014-10-10 18:05:29.228419"], ["user_id", 3]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-10-10 18:05:29.230378"], ["name", "bob"], ["updated_at", "2014-10-10 18:05:29.230378"]]
+  [1m[36mApiKey Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = '5e6100ce6d7d30164729595755c1179a' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:05:29.231102"], ["token", "5e6100ce6d7d30164729595755c1179a"], ["updated_at", "2014-10-10 18:05:29.231102"], ["user_id", 4]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:05:29.243371"], ["name", "steve"], ["updated_at", "2014-10-10 18:05:29.243371"], ["user_id", 1]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:05:29.246594"], ["name", "liz"], ["updated_at", "2014-10-10 18:05:29.246594"], ["user_id", 2]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:05:29.248415"], ["name", "justin"], ["updated_at", "2014-10-10 18:05:29.248415"], ["user_id", 3]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:05:29.249869"], ["name", "bob"], ["updated_at", "2014-10-10 18:05:29.249869"], ["user_id", 4]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[36m (3.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.9ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateLoans (20140928200117)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "loans" ("id" serial primary key, "creditor_id" integer, "debtor_id" integer, "amount" decimal, "description" character varying(255), "closed" boolean DEFAULT 'f', "private_debt" boolean DEFAULT 'f', "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140928200117"]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateHistoricalLoans (20140928212415)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (1.9ms)[0m  [1mCREATE TABLE "historical_loans" ("id" serial primary key, "old_loan_id" integer, "new_loan_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140928212415"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAccounts (20140928212614)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "accounts" ("id" serial primary key, "user_id" integer, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140928212614"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateApiKeys (20140930184129)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "api_keys" ("id" serial primary key, "user_id" integer NOT NULL, "token" character varying(255) NOT NULL, "active" boolean DEFAULT 't' NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.7ms)[0m  CREATE  INDEX  "index_api_keys_on_user_id" ON "api_keys"  ("user_id")
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX  "index_api_keys_on_token" ON "api_keys"  ("token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140930184129"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20140930184921)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (2.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140930184921"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-10-10 18:05:47.875049"], ["name", "steve"], ["updated_at", "2014-10-10 18:05:47.875049"]]
+  [1m[35mApiKey Exists (0.7ms)[0m  SELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = 'b09053c16915644c57b4a8560feefcb8' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:05:47.885684"], ["token", "b09053c16915644c57b4a8560feefcb8"], ["updated_at", "2014-10-10 18:05:47.885684"], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-10-10 18:05:47.900472"], ["name", "liz"], ["updated_at", "2014-10-10 18:05:47.900472"]]
+  [1m[36mApiKey Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = '26808ae3864e0799b54651d94543a8d2' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:05:47.901834"], ["token", "26808ae3864e0799b54651d94543a8d2"], ["updated_at", "2014-10-10 18:05:47.901834"], ["user_id", 2]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-10-10 18:05:47.904545"], ["name", "justin"], ["updated_at", "2014-10-10 18:05:47.904545"]]
+  [1m[35mApiKey Exists (0.3ms)[0m  SELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = 'a4c598201df1eaa4d4c1bbaa85b06e5b' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:05:47.905429"], ["token", "a4c598201df1eaa4d4c1bbaa85b06e5b"], ["updated_at", "2014-10-10 18:05:47.905429"], ["user_id", 3]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-10-10 18:05:47.907949"], ["name", "bob"], ["updated_at", "2014-10-10 18:05:47.907949"]]
+  [1m[36mApiKey Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "api_keys"  WHERE "api_keys"."token" = '01bb6e5fbc9cdfb8229d4e38963c621c' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "api_keys" ("created_at", "token", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:05:47.908774"], ["token", "01bb6e5fbc9cdfb8229d4e38963c621c"], ["updated_at", "2014-10-10 18:05:47.908774"], ["user_id", 4]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:05:47.921731"], ["name", "steve"], ["updated_at", "2014-10-10 18:05:47.921731"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:05:47.924814"], ["name", "liz"], ["updated_at", "2014-10-10 18:05:47.924814"], ["user_id", 2]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-10 18:05:47.926685"], ["name", "justin"], ["updated_at", "2014-10-10 18:05:47.926685"], ["user_id", 3]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "accounts" ("created_at", "name", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-10-10 18:05:47.928055"], ["name", "bob"], ["updated_at", "2014-10-10 18:05:47.928055"], ["user_id", 4]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "description", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "100.0"], ["created_at", "2014-10-10 18:05:47.972404"], ["creditor_id", 1], ["debtor_id", 2], ["description", "something or other"], ["updated_at", "2014-10-10 18:05:47.972404"]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "description", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["amount", "80.0"], ["created_at", "2014-10-10 18:05:47.975672"], ["creditor_id", 1], ["debtor_id", 2], ["description", "something or other"], ["updated_at", "2014-10-10 18:05:47.975672"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "description", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "90.0"], ["created_at", "2014-10-10 18:05:47.977569"], ["creditor_id", 2], ["debtor_id", 1], ["description", "something or other"], ["updated_at", "2014-10-10 18:05:47.977569"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "description", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["amount", "200.0"], ["created_at", "2014-10-10 18:05:47.979189"], ["creditor_id", 2], ["debtor_id", 1], ["description", "something or other"], ["updated_at", "2014-10-10 18:05:47.979189"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "description", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "300.0"], ["created_at", "2014-10-10 18:05:47.980855"], ["creditor_id", 3], ["debtor_id", 1], ["description", "something or other"], ["updated_at", "2014-10-10 18:05:47.980855"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "description", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["amount", "450.0"], ["created_at", "2014-10-10 18:05:47.982473"], ["creditor_id", 3], ["debtor_id", 1], ["description", "something or other"], ["updated_at", "2014-10-10 18:05:47.982473"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "description", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "230.0"], ["created_at", "2014-10-10 18:05:47.984219"], ["creditor_id", 1], ["debtor_id", 3], ["description", "something or other"], ["updated_at", "2014-10-10 18:05:47.984219"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "description", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["amount", "120.0"], ["created_at", "2014-10-10 18:05:47.985780"], ["creditor_id", 1], ["debtor_id", 3], ["description", "something or other"], ["updated_at", "2014-10-10 18:05:47.985780"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "description", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "100.0"], ["created_at", "2014-10-10 18:05:47.987401"], ["creditor_id", 1], ["debtor_id", 4], ["description", "something or other"], ["updated_at", "2014-10-10 18:05:47.987401"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "loans" ("amount", "created_at", "creditor_id", "debtor_id", "description", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["amount", "99.0"], ["created_at", "2014-10-10 18:05:47.989062"], ["creditor_id", 4], ["debtor_id", 1], ["description", "something or other"], ["updated_at", "2014-10-10 18:05:47.989062"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
